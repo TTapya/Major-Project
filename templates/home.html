@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donors Choose</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class='title'>Proposal Acceptance Prediction</div>
+    <div class='pred'>
+        <form action="{{ url_for('predict') }}" method="post">
+            <br>
+            <br>
+            <div class='form-group'>
+            	<h3>Honorific</h3>
+            	<select class='form-control form-control-sm' name="prefix" id="resea" required="required">
+                <option value="mr">Mr</option>
+                <option value="ms">Ms</option>
+                <option value="mrs">Mrs</option>
+                <option value="dr">Dr</option>
+                <option value="teacher">Teacher</option>
+            	</select>
+            </div>
+            <br>
+            <div class='form-group'>
+                <h3>Proposal Grade</h3>
+            	<select class='form-control form-control-sm' name="grade" id="resea" required="required">
+                <option value="grades_prek_2">Pre KG to Class 2</option>
+                <option value="grades_3_5">Class 3 to Class 5</option>
+                <option value="grades_6_8">Class 6 to Class 8</option>
+                <option value="grades_9_12">Class 9 to Class 12</option>
+            	</select>
+            </div>
+            <br>
+            <div class='form-group'>
+                <h3>Select Category</h3>
+            	<select class='form-control form-control-sm' name="cat" id="resea" required="required">
+                    <option value='appliedlearning'>appliedlearning</option>
+                    <option value='appliedlearning health_sports'>appliedlearning health_sports</option>
+                    <option value='appliedlearning history_civics'>appliedlearning history_civics</option>
+                    <option value='appliedlearning literacy_language'>appliedlearning literacy_language</option>
+                    <option value='appliedlearning math_science'>appliedlearning math_science</option>
+                    <option value='appliedlearning music_arts'>appliedlearning music_arts</option>
+                    <option value='appliedlearning specialneeds'>appliedlearning specialneeds</option>
+                    <option value='appliedlearning warmth care_hunger'>appliedlearning warmth care_hunger</option>
+                    <option value='health_sports'>health_sports</option>
+                    <option value='health_sports appliedlearning'>health_sports appliedlearning</option>
+                    <option value='health_sports history_civics'>health_sports history_civics</option>
+                    <option value='health_sports literacy_language'>health_sports literacy_language</option>
+                    <option value='health_sports math_science'>health_sports math_science</option>
+                    <option value='health_sports music_arts'>health_sports music_arts</option>
+                    <option value='health_sports specialneeds'>health_sports specialneeds</option>
+                    <option value='health_sports warmth care_hunger'>health_sports warmth care_hunger</option>
+                    <option value='history_civics'>history_civics</option>
+                    <option value='history_civics appliedlearning'>history_civics appliedlearning</option>
+                    <option value='history_civics health_sports'>history_civics health_sports</option>
+                    <option value='history_civics literacy_language'>history_civics literacy_language</option>
+                    <option value='history_civics math_science'>history_civics math_science</option>
+                    <option value='history_civics music_arts'>history_civics music_arts</option>
+                    <option value='history_civics specialneeds'>history_civics specialneeds</option>
+                    <option value='history_civics warmth care_hunger'>history_civics warmth care_hunger</option>
+                    <option value='literacy_language'>literacy_language</option>
+                    <option value='literacy_language appliedlearning'>literacy_language appliedlearning</option>
+                    <option value='literacy_language health_sports'>literacy_language health_sports</option>
+                    <option value='literacy_language history_civics'>literacy_language history_civics</option>
+                    <option value='literacy_language math_science'>literacy_language math_science</option>
+                    <option value='literacy_language music_arts'>literacy_language music_arts</option>
+                    <option value='literacy_language specialneeds'>literacy_language specialneeds</option>
+                    <option value='literacy_language warmth care_hunger'>literacy_language warmth care_hunger</option>
+                    <option value='math_science'>math_science</option>
+                    <option value='math_science appliedlearning'>math_science appliedlearning</option>
+                    <option value='math_science health_sports'>math_science health_sports</option>
+                    <option value='math_science history_civics'>math_science history_civics</option>
+                    <option value='math_science literacy_language'>math_science literacy_language</option>
+                    <option value='math_science music_arts'>math_science music_arts</option>
+                    <option value='math_science specialneeds'>math_science specialneeds</option>
+                    <option value='math_science warmth care_hunger'>math_science warmth care_hunger</option>
+                    <option value='music_arts'>music_arts</option>
+                    <option value='music_arts appliedlearning'>music_arts appliedlearning</option>
+                    <option value='music_arts health_sports'>music_arts health_sports</option>
+                    <option value='music_arts history_civics'>music_arts history_civics</option>
+                    <option value='music_arts specialneeds'>music_arts specialneeds</option>
+                    <option value='music_arts warmth care_hunger'>music_arts warmth care_hunger</option>
+                    <option value='specialneeds'>specialneeds</option>
+                    <option value='specialneeds health_sports'>specialneeds health_sports</option>
+                    <option value='specialneeds music_arts'>specialneeds music_arts</option>
+                    <option value='specialneeds warmth care_hunger'>specialneeds warmth care_hunger</option>
+                    <option value='warmth care_hunger'>warmth care_hunger</option>
+            	</select>
+            </div>
+            <br>
+            <div class='form-group'>
+                <h3>Select Sub-Category</h3>
+            	<select class='form-control form-control-sm' name="subcat" id="resea" required="required">
+                    <option value='appliedsciences'>appliedsciences</option>
+                    <option value='appliedsciences charactereducation'>appliedsciences charactereducation</option>
+                    <option value='appliedsciences civics_government'>appliedsciences civics_government</option>
+                    <option value='appliedsciences college_careerprep'>appliedsciences college_careerprep</option>
+                    <option value='appliedsciences communityservice'>appliedsciences communityservice</option>
+                    <option value='appliedsciences earlydevelopment'>appliedsciences earlydevelopment</option>
+                    <option value='appliedsciences economics'>appliedsciences economics</option>
+                    <option value='appliedsciences environmentalscience'>appliedsciences environmentalscience</option>
+                    <option value='appliedsciences esl'>appliedsciences esl</option>
+                    <option value='appliedsciences extracurricular'>appliedsciences extracurricular</option>
+                    <option value='appliedsciences financialliteracy'>appliedsciences financialliteracy</option>
+                    <option value='appliedsciences foreignlanguages'>appliedsciences foreignlanguages</option>
+                    <option value='appliedsciences gym_fitness'>appliedsciences gym_fitness</option>
+                    <option value='appliedsciences health_lifescience'>appliedsciences health_lifescience</option>
+                    <option value='appliedsciences health_wellness'>appliedsciences health_wellness</option>
+                    <option value='appliedsciences history_geography'>appliedsciences history_geography</option>
+                    <option value='appliedsciences literacy'>appliedsciences literacy</option>
+                    <option value='appliedsciences literature_writing'>appliedsciences literature_writing</option>
+                    <option value='appliedsciences mathematics'>appliedsciences mathematics</option>
+                    <option value='appliedsciences music'>appliedsciences music</option>
+                    <option value='appliedsciences nutritioneducation'>appliedsciences nutritioneducation</option>
+                    <option value='appliedsciences other'>appliedsciences other</option>
+                    <option value='appliedsciences parentinvolvement'>appliedsciences parentinvolvement</option>
+                    <option value='appliedsciences performingarts'>appliedsciences performingarts</option>
+                    <option value='appliedsciences socialsciences'>appliedsciences socialsciences</option>
+                    <option value='appliedsciences specialneeds'>appliedsciences specialneeds</option>
+                    <option value='appliedsciences teamsports'>appliedsciences teamsports</option>
+                    <option value='appliedsciences visualarts'>appliedsciences visualarts</option>
+                    <option value='appliedsciences warmth care_hunger'>appliedsciences warmth care_hunger</option>
+                    <option value='charactereducation'>charactereducation</option>
+                    <option value='charactereducation civics_government'>charactereducation civics_government</option>
+                    <option value='charactereducation college_careerprep'>charactereducation college_careerprep</option>
+                    <option value='charactereducation communityservice'>charactereducation communityservice</option>
+                    <option value='charactereducation earlydevelopment'>charactereducation earlydevelopment</option>
+                    <option value='charactereducation economics'>charactereducation economics</option>
+                    <option value='charactereducation environmentalscience'>charactereducation environmentalscience</option>
+                    <option value='charactereducation esl'>charactereducation esl</option>
+                    <option value='charactereducation extracurricular'>charactereducation extracurricular</option>
+                    <option value='charactereducation financialliteracy'>charactereducation financialliteracy</option>
+                    <option value='charactereducation foreignlanguages'>charactereducation foreignlanguages</option>
+                    <option value='charactereducation gym_fitness'>charactereducation gym_fitness</option>
+                    <option value='charactereducation health_lifescience'>charactereducation health_lifescience</option>
+                    <option value='charactereducation health_wellness'>charactereducation health_wellness</option>
+                    <option value='charactereducation history_geography'>charactereducation history_geography</option>
+                    <option value='charactereducation literacy'>charactereducation literacy</option>
+                    <option value='charactereducation literature_writing'>charactereducation literature_writing</option>
+                    <option value='charactereducation mathematics'>charactereducation mathematics</option>
+                    <option value='charactereducation music'>charactereducation music</option>
+                    <option value='charactereducation nutritioneducation'>charactereducation nutritioneducation</option>
+                    <option value='charactereducation other'>charactereducation other</option>
+                    <option value='charactereducation parentinvolvement'>charactereducation parentinvolvement</option>
+                    <option value='charactereducation performingarts'>charactereducation performingarts</option>
+                    <option value='charactereducation socialsciences'>charactereducation socialsciences</option>
+                    <option value='charactereducation specialneeds'>charactereducation specialneeds</option>
+                    <option value='charactereducation teamsports'>charactereducation teamsports</option>
+                    <option value='charactereducation visualarts'>charactereducation visualarts</option>
+                    <option value='charactereducation warmth care_hunger'>charactereducation warmth care_hunger</option>
+                    <option value='civics_government'>civics_government</option>
+                    <option value='civics_government college_careerprep'>civics_government college_careerprep</option>
+                    <option value='civics_government communityservice'>civics_government communityservice</option>
+                    <option value='civics_government economics'>civics_government economics</option>
+                    <option value='civics_government environmentalscience'>civics_government environmentalscience</option>
+                    <option value='civics_government esl'>civics_government esl</option>
+                    <option value='civics_government extracurricular'>civics_government extracurricular</option>
+                    <option value='civics_government financialliteracy'>civics_government financialliteracy</option>
+                    <option value='civics_government foreignlanguages'>civics_government foreignlanguages</option>
+                    <option value='civics_government health_lifescience'>civics_government health_lifescience</option>
+                    <option value='civics_government health_wellness'>civics_government health_wellness</option>
+                    <option value='civics_government history_geography'>civics_government history_geography</option>
+                    <option value='civics_government literacy'>civics_government literacy</option>
+                    <option value='civics_government literature_writing'>civics_government literature_writing</option>
+                    <option value='civics_government mathematics'>civics_government mathematics</option>
+                    <option value='civics_government nutritioneducation'>civics_government nutritioneducation</option>
+                    <option value='civics_government parentinvolvement'>civics_government parentinvolvement</option>
+                    <option value='civics_government performingarts'>civics_government performingarts</option>
+                    <option value='civics_government socialsciences'>civics_government socialsciences</option>
+                    <option value='civics_government specialneeds'>civics_government specialneeds</option>
+                    <option value='civics_government teamsports'>civics_government teamsports</option>
+                    <option value='civics_government visualarts'>civics_government visualarts</option>
+                    <option value='college_careerprep'>college_careerprep</option>
+                    <option value='college_careerprep communityservice'>college_careerprep communityservice</option>
+                    <option value='college_careerprep earlydevelopment'>college_careerprep earlydevelopment</option>
+                    <option value='college_careerprep economics'>college_careerprep economics</option>
+                    <option value='college_careerprep environmentalscience'>college_careerprep environmentalscience</option>
+                    <option value='college_careerprep esl'>college_careerprep esl</option>
+                    <option value='college_careerprep extracurricular'>college_careerprep extracurricular</option>
+                    <option value='college_careerprep financialliteracy'>college_careerprep financialliteracy</option>
+                    <option value='college_careerprep foreignlanguages'>college_careerprep foreignlanguages</option>
+                    <option value='college_careerprep gym_fitness'>college_careerprep gym_fitness</option>
+                    <option value='college_careerprep health_lifescience'>college_careerprep health_lifescience</option>
+                    <option value='college_careerprep health_wellness'>college_careerprep health_wellness</option>
+                    <option value='college_careerprep history_geography'>college_careerprep history_geography</option>
+                    <option value='college_careerprep literacy'>college_careerprep literacy</option>
+                    <option value='college_careerprep literature_writing'>college_careerprep literature_writing</option>
+                    <option value='college_careerprep mathematics'>college_careerprep mathematics</option>
+                    <option value='college_careerprep music'>college_careerprep music</option>
+                    <option value='college_careerprep nutritioneducation'>college_careerprep nutritioneducation</option>
+                    <option value='college_careerprep other'>college_careerprep other</option>
+                    <option value='college_careerprep parentinvolvement'>college_careerprep parentinvolvement</option>
+                    <option value='college_careerprep performingarts'>college_careerprep performingarts</option>
+                    <option value='college_careerprep socialsciences'>college_careerprep socialsciences</option>
+                    <option value='college_careerprep specialneeds'>college_careerprep specialneeds</option>
+                    <option value='college_careerprep teamsports'>college_careerprep teamsports</option>
+                    <option value='college_careerprep visualarts'>college_careerprep visualarts</option>
+                    <option value='college_careerprep warmth care_hunger'>college_careerprep warmth care_hunger</option>
+                    <option value='communityservice'>communityservice</option>
+                    <option value='communityservice earlydevelopment'>communityservice earlydevelopment</option>
+                    <option value='communityservice economics'>communityservice economics</option>
+                    <option value='communityservice environmentalscience'>communityservice environmentalscience</option>
+                    <option value='communityservice esl'>communityservice esl</option>
+                    <option value='communityservice extracurricular'>communityservice extracurricular</option>
+                    <option value='communityservice financialliteracy'>communityservice financialliteracy</option>
+                    <option value='communityservice gym_fitness'>communityservice gym_fitness</option>
+                    <option value='communityservice health_lifescience'>communityservice health_lifescience</option>
+                    <option value='communityservice health_wellness'>communityservice health_wellness</option>
+                    <option value='communityservice history_geography'>communityservice history_geography</option>
+                    <option value='communityservice literacy'>communityservice literacy</option>
+                    <option value='communityservice literature_writing'>communityservice literature_writing</option>
+                    <option value='communityservice mathematics'>communityservice mathematics</option>
+                    <option value='communityservice music'>communityservice music</option>
+                    <option value='communityservice nutritioneducation'>communityservice nutritioneducation</option>
+                    <option value='communityservice other'>communityservice other</option>
+                    <option value='communityservice parentinvolvement'>communityservice parentinvolvement</option>
+                    <option value='communityservice performingarts'>communityservice performingarts</option>
+                    <option value='communityservice socialsciences'>communityservice socialsciences</option>
+                    <option value='communityservice specialneeds'>communityservice specialneeds</option>
+                    <option value='communityservice visualarts'>communityservice visualarts</option>
+                    <option value='earlydevelopment'>earlydevelopment</option>
+                    <option value='earlydevelopment economics'>earlydevelopment economics</option>
+                    <option value='earlydevelopment environmentalscience'>earlydevelopment environmentalscience</option>
+                    <option value='earlydevelopment extracurricular'>earlydevelopment extracurricular</option>
+                    <option value='earlydevelopment financialliteracy'>earlydevelopment financialliteracy</option>
+                    <option value='earlydevelopment foreignlanguages'>earlydevelopment foreignlanguages</option>
+                    <option value='earlydevelopment gym_fitness'>earlydevelopment gym_fitness</option>
+                    <option value='earlydevelopment health_lifescience'>earlydevelopment health_lifescience</option>
+                    <option value='earlydevelopment health_wellness'>earlydevelopment health_wellness</option>
+                    <option value='earlydevelopment history_geography'>earlydevelopment history_geography</option>
+                    <option value='earlydevelopment literacy'>earlydevelopment literacy</option>
+                    <option value='earlydevelopment literature_writing'>earlydevelopment literature_writing</option>
+                    <option value='earlydevelopment mathematics'>earlydevelopment mathematics</option>
+                    <option value='earlydevelopment music'>earlydevelopment music</option>
+                    <option value='earlydevelopment nutritioneducation'>earlydevelopment nutritioneducation</option>
+                    <option value='earlydevelopment other'>earlydevelopment other</option>
+                    <option value='earlydevelopment parentinvolvement'>earlydevelopment parentinvolvement</option>
+                    <option value='earlydevelopment performingarts'>earlydevelopment performingarts</option>
+                    <option value='earlydevelopment socialsciences'>earlydevelopment socialsciences</option>
+                    <option value='earlydevelopment specialneeds'>earlydevelopment specialneeds</option>
+                    <option value='earlydevelopment teamsports'>earlydevelopment teamsports</option>
+                    <option value='earlydevelopment visualarts'>earlydevelopment visualarts</option>
+                    <option value='earlydevelopment warmth care_hunger'>earlydevelopment warmth care_hunger</option>
+                    <option value='economics'>economics</option>
+                    <option value='economics environmentalscience'>economics environmentalscience</option>
+                    <option value='economics financialliteracy'>economics financialliteracy</option>
+                    <option value='economics foreignlanguages'>economics foreignlanguages</option>
+                    <option value='economics health_lifescience'>economics health_lifescience</option>
+                    <option value='economics history_geography'>economics history_geography</option>
+                    <option value='economics literacy'>economics literacy</option>
+                    <option value='economics literature_writing'>economics literature_writing</option>
+                    <option value='economics mathematics'>economics mathematics</option>
+                    <option value='economics music'>economics music</option>
+                    <option value='economics nutritioneducation'>economics nutritioneducation</option>
+                    <option value='economics other'>economics other</option>
+                    <option value='economics socialsciences'>economics socialsciences</option>
+                    <option value='economics specialneeds'>economics specialneeds</option>
+                    <option value='economics visualarts'>economics visualarts</option>
+                    <option value='environmentalscience'>environmentalscience</option>
+                    <option value='environmentalscience extracurricular'>environmentalscience extracurricular</option>
+                    <option value='environmentalscience financialliteracy'>environmentalscience financialliteracy</option>
+                    <option value='environmentalscience foreignlanguages'>environmentalscience foreignlanguages</option>
+                    <option value='environmentalscience gym_fitness'>environmentalscience gym_fitness</option>
+                    <option value='environmentalscience health_lifescience'>environmentalscience health_lifescience</option>
+                    <option value='environmentalscience health_wellness'>environmentalscience health_wellness</option>
+                    <option value='environmentalscience history_geography'>environmentalscience history_geography</option>
+                    <option value='environmentalscience literacy'>environmentalscience literacy</option>
+                    <option value='environmentalscience literature_writing'>environmentalscience literature_writing</option>
+                    <option value='environmentalscience mathematics'>environmentalscience mathematics</option>
+                    <option value='environmentalscience music'>environmentalscience music</option>
+                    <option value='environmentalscience nutritioneducation'>environmentalscience nutritioneducation</option>
+                    <option value='environmentalscience other'>environmentalscience other</option>
+                    <option value='environmentalscience parentinvolvement'>environmentalscience parentinvolvement</option>
+                    <option value='environmentalscience performingarts'>environmentalscience performingarts</option>
+                    <option value='environmentalscience socialsciences'>environmentalscience socialsciences</option>
+                    <option value='environmentalscience specialneeds'>environmentalscience specialneeds</option>
+                    <option value='environmentalscience teamsports'>environmentalscience teamsports</option>
+                    <option value='environmentalscience visualarts'>environmentalscience visualarts</option>
+                    <option value='environmentalscience warmth care_hunger'>environmentalscience warmth care_hunger</option>
+                    <option value='esl'>esl</option>
+                    <option value='esl earlydevelopment'>esl earlydevelopment</option>
+                    <option value='esl economics'>esl economics</option>
+                    <option value='esl environmentalscience'>esl environmentalscience</option>
+                    <option value='esl extracurricular'>esl extracurricular</option>
+                    <option value='esl financialliteracy'>esl financialliteracy</option>
+                    <option value='esl foreignlanguages'>esl foreignlanguages</option>
+                    <option value='esl gym_fitness'>esl gym_fitness</option>
+                    <option value='esl health_lifescience'>esl health_lifescience</option>
+                    <option value='esl health_wellness'>esl health_wellness</option>
+                    <option value='esl history_geography'>esl history_geography</option>
+                    <option value='esl literacy'>esl literacy</option>
+                    <option value='esl literature_writing'>esl literature_writing</option>
+                    <option value='esl mathematics'>esl mathematics</option>
+                    <option value='esl music'>esl music</option>
+                    <option value='esl nutritioneducation'>esl nutritioneducation</option>
+                    <option value='esl other'>esl other</option>
+                    <option value='esl parentinvolvement'>esl parentinvolvement</option>
+                    <option value='esl performingarts'>esl performingarts</option>
+                    <option value='esl socialsciences'>esl socialsciences</option>
+                    <option value='esl specialneeds'>esl specialneeds</option>
+                    <option value='esl teamsports'>esl teamsports</option>
+                    <option value='esl visualarts'>esl visualarts</option>
+                    <option value='extracurricular'>extracurricular</option>
+                    <option value='extracurricular financialliteracy'>extracurricular financialliteracy</option>
+                    <option value='extracurricular foreignlanguages'>extracurricular foreignlanguages</option>
+                    <option value='extracurricular gym_fitness'>extracurricular gym_fitness</option>
+                    <option value='extracurricular health_lifescience'>extracurricular health_lifescience</option>
+                    <option value='extracurricular health_wellness'>extracurricular health_wellness</option>
+                    <option value='extracurricular history_geography'>extracurricular history_geography</option>
+                    <option value='extracurricular literacy'>extracurricular literacy</option>
+                    <option value='extracurricular literature_writing'>extracurricular literature_writing</option>
+                    <option value='extracurricular mathematics'>extracurricular mathematics</option>
+                    <option value='extracurricular music'>extracurricular music</option>
+                    <option value='extracurricular nutritioneducation'>extracurricular nutritioneducation</option>
+                    <option value='extracurricular other'>extracurricular other</option>
+                    <option value='extracurricular parentinvolvement'>extracurricular parentinvolvement</option>
+                    <option value='extracurricular performingarts'>extracurricular performingarts</option>
+                    <option value='extracurricular socialsciences'>extracurricular socialsciences</option>
+                    <option value='extracurricular specialneeds'>extracurricular specialneeds</option>
+                    <option value='extracurricular teamsports'>extracurricular teamsports</option>
+                    <option value='extracurricular visualarts'>extracurricular visualarts</option>
+                    <option value='financialliteracy'>financialliteracy</option>
+                    <option value='financialliteracy foreignlanguages'>financialliteracy foreignlanguages</option>
+                    <option value='financialliteracy health_lifescience'>financialliteracy health_lifescience</option>
+                    <option value='financialliteracy health_wellness'>financialliteracy health_wellness</option>
+                    <option value='financialliteracy history_geography'>financialliteracy history_geography</option>
+                    <option value='financialliteracy literacy'>financialliteracy literacy</option>
+                    <option value='financialliteracy literature_writing'>financialliteracy literature_writing</option>
+                    <option value='financialliteracy mathematics'>financialliteracy mathematics</option>
+                    <option value='financialliteracy other'>financialliteracy other</option>
+                    <option value='financialliteracy parentinvolvement'>financialliteracy parentinvolvement</option>
+                    <option value='financialliteracy performingarts'>financialliteracy performingarts</option>
+                    <option value='financialliteracy socialsciences'>financialliteracy socialsciences</option>
+                    <option value='financialliteracy specialneeds'>financialliteracy specialneeds</option>
+                    <option value='financialliteracy visualarts'>financialliteracy visualarts</option>
+                    <option value='foreignlanguages'>foreignlanguages</option>
+                    <option value='foreignlanguages gym_fitness'>foreignlanguages gym_fitness</option>
+                    <option value='foreignlanguages health_lifescience'>foreignlanguages health_lifescience</option>
+                    <option value='foreignlanguages health_wellness'>foreignlanguages health_wellness</option>
+                    <option value='foreignlanguages history_geography'>foreignlanguages history_geography</option>
+                    <option value='foreignlanguages literacy'>foreignlanguages literacy</option>
+                    <option value='foreignlanguages literature_writing'>foreignlanguages literature_writing</option>
+                    <option value='foreignlanguages mathematics'>foreignlanguages mathematics</option>
+                    <option value='foreignlanguages music'>foreignlanguages music</option>
+                    <option value='foreignlanguages other'>foreignlanguages other</option>
+                    <option value='foreignlanguages performingarts'>foreignlanguages performingarts</option>
+                    <option value='foreignlanguages socialsciences'>foreignlanguages socialsciences</option>
+                    <option value='foreignlanguages specialneeds'>foreignlanguages specialneeds</option>
+                    <option value='foreignlanguages visualarts'>foreignlanguages visualarts</option>
+                    <option value='gym_fitness'>gym_fitness</option>
+                    <option value='gym_fitness health_lifescience'>gym_fitness health_lifescience</option>
+                    <option value='gym_fitness health_wellness'>gym_fitness health_wellness</option>
+                    <option value='gym_fitness history_geography'>gym_fitness history_geography</option>
+                    <option value='gym_fitness literacy'>gym_fitness literacy</option>
+                    <option value='gym_fitness literature_writing'>gym_fitness literature_writing</option>
+                    <option value='gym_fitness mathematics'>gym_fitness mathematics</option>
+                    <option value='gym_fitness music'>gym_fitness music</option>
+                    <option value='gym_fitness nutritioneducation'>gym_fitness nutritioneducation</option>
+                    <option value='gym_fitness other'>gym_fitness other</option>
+                    <option value='gym_fitness parentinvolvement'>gym_fitness parentinvolvement</option>
+                    <option value='gym_fitness performingarts'>gym_fitness performingarts</option>
+                    <option value='gym_fitness socialsciences'>gym_fitness socialsciences</option>
+                    <option value='gym_fitness specialneeds'>gym_fitness specialneeds</option>
+                    <option value='gym_fitness teamsports'>gym_fitness teamsports</option>
+                    <option value='gym_fitness visualarts'>gym_fitness visualarts</option>
+                    <option value='gym_fitness warmth care_hunger'>gym_fitness warmth care_hunger</option>
+                    <option value='health_lifescience'>health_lifescience</option>
+                    <option value='health_lifescience health_wellness'>health_lifescience health_wellness</option>
+                    <option value='health_lifescience history_geography'>health_lifescience history_geography</option>
+                    <option value='health_lifescience literacy'>health_lifescience literacy</option>
+                    <option value='health_lifescience literature_writing'>health_lifescience literature_writing</option>
+                    <option value='health_lifescience mathematics'>health_lifescience mathematics</option>
+                    <option value='health_lifescience music'>health_lifescience music</option>
+                    <option value='health_lifescience nutritioneducation'>health_lifescience nutritioneducation</option>
+                    <option value='health_lifescience other'>health_lifescience other</option>
+                    <option value='health_lifescience parentinvolvement'>health_lifescience parentinvolvement</option>
+                    <option value='health_lifescience performingarts'>health_lifescience performingarts</option>
+                    <option value='health_lifescience socialsciences'>health_lifescience socialsciences</option>
+                    <option value='health_lifescience specialneeds'>health_lifescience specialneeds</option>
+                    <option value='health_lifescience teamsports'>health_lifescience teamsports</option>
+                    <option value='health_lifescience visualarts'>health_lifescience visualarts</option>
+                    <option value='health_lifescience warmth care_hunger'>health_lifescience warmth care_hunger</option>
+                    <option value='health_wellness'>health_wellness</option>
+                    <option value='health_wellness history_geography'>health_wellness history_geography</option>
+                    <option value='health_wellness literacy'>health_wellness literacy</option>
+                    <option value='health_wellness literature_writing'>health_wellness literature_writing</option>
+                    <option value='health_wellness mathematics'>health_wellness mathematics</option>
+                    <option value='health_wellness music'>health_wellness music</option>
+                    <option value='health_wellness nutritioneducation'>health_wellness nutritioneducation</option>
+                    <option value='health_wellness other'>health_wellness other</option>
+                    <option value='health_wellness parentinvolvement'>health_wellness parentinvolvement</option>
+                    <option value='health_wellness performingarts'>health_wellness performingarts</option>
+                    <option value='health_wellness socialsciences'>health_wellness socialsciences</option>
+                    <option value='health_wellness specialneeds'>health_wellness specialneeds</option>
+                    <option value='health_wellness teamsports'>health_wellness teamsports</option>
+                    <option value='health_wellness visualarts'>health_wellness visualarts</option>
+                    <option value='health_wellness warmth care_hunger'>health_wellness warmth care_hunger</option>
+                    <option value='history_geography'>history_geography</option>
+                    <option value='history_geography literacy'>history_geography literacy</option>
+                    <option value='history_geography literature_writing'>history_geography literature_writing</option>
+                    <option value='history_geography mathematics'>history_geography mathematics</option>
+                    <option value='history_geography music'>history_geography music</option>
+                    <option value='history_geography other'>history_geography other</option>
+                    <option value='history_geography parentinvolvement'>history_geography parentinvolvement</option>
+                    <option value='history_geography performingarts'>history_geography performingarts</option>
+                    <option value='history_geography socialsciences'>history_geography socialsciences</option>
+                    <option value='history_geography specialneeds'>history_geography specialneeds</option>
+                    <option value='history_geography teamsports'>history_geography teamsports</option>
+                    <option value='history_geography visualarts'>history_geography visualarts</option>
+                    <option value='history_geography warmth care_hunger'>history_geography warmth care_hunger</option>
+                    <option value='literacy'>literacy</option>
+                    <option value='literacy literature_writing'>literacy literature_writing</option>
+                    <option value='literacy mathematics'>literacy mathematics</option>
+                    <option value='literacy music'>literacy music</option>
+                    <option value='literacy nutritioneducation'>literacy nutritioneducation</option>
+                    <option value='literacy other'>literacy other</option>
+                    <option value='literacy parentinvolvement'>literacy parentinvolvement</option>
+                    <option value='literacy performingarts'>literacy performingarts</option>
+                    <option value='literacy socialsciences'>literacy socialsciences</option>
+                    <option value='literacy specialneeds'>literacy specialneeds</option>
+                    <option value='literacy teamsports'>literacy teamsports</option>
+                    <option value='literacy visualarts'>literacy visualarts</option>
+                    <option value='literacy warmth care_hunger'>literacy warmth care_hunger</option>
+                    <option value='literature_writing'>literature_writing</option>
+                    <option value='literature_writing mathematics'>literature_writing mathematics</option>
+                    <option value='literature_writing music'>literature_writing music</option>
+                    <option value='literature_writing nutritioneducation'>literature_writing nutritioneducation</option>
+                    <option value='literature_writing other'>literature_writing other</option>
+                    <option value='literature_writing parentinvolvement'>literature_writing parentinvolvement</option>
+                    <option value='literature_writing performingarts'>literature_writing performingarts</option>
+                    <option value='literature_writing socialsciences'>literature_writing socialsciences</option>
+                    <option value='literature_writing specialneeds'>literature_writing specialneeds</option>
+                    <option value='literature_writing teamsports'>literature_writing teamsports</option>
+                    <option value='literature_writing visualarts'>literature_writing visualarts</option>
+                    <option value='literature_writing warmth care_hunger'>literature_writing warmth care_hunger</option>
+                    <option value='mathematics'>mathematics</option>
+                    <option value='mathematics music'>mathematics music</option>
+                    <option value='mathematics nutritioneducation'>mathematics nutritioneducation</option>
+                    <option value='mathematics other'>mathematics other</option>
+                    <option value='mathematics parentinvolvement'>mathematics parentinvolvement</option>
+                    <option value='mathematics performingarts'>mathematics performingarts</option>
+                    <option value='mathematics socialsciences'>mathematics socialsciences</option>
+                    <option value='mathematics specialneeds'>mathematics specialneeds</option>
+                    <option value='mathematics teamsports'>mathematics teamsports</option>
+                    <option value='mathematics visualarts'>mathematics visualarts</option>
+                    <option value='mathematics warmth care_hunger'>mathematics warmth care_hunger</option>
+                    <option value='music'>music</option>
+                    <option value='music other'>music other</option>
+                    <option value='music parentinvolvement'>music parentinvolvement</option>
+                    <option value='music performingarts'>music performingarts</option>
+                    <option value='music socialsciences'>music socialsciences</option>
+                    <option value='music specialneeds'>music specialneeds</option>
+                    <option value='music teamsports'>music teamsports</option>
+                    <option value='music visualarts'>music visualarts</option>
+                    <option value='nutritioneducation'>nutritioneducation</option>
+                    <option value='nutritioneducation other'>nutritioneducation other</option>
+                    <option value='nutritioneducation socialsciences'>nutritioneducation socialsciences</option>
+                    <option value='nutritioneducation specialneeds'>nutritioneducation specialneeds</option>
+                    <option value='nutritioneducation teamsports'>nutritioneducation teamsports</option>
+                    <option value='nutritioneducation visualarts'>nutritioneducation visualarts</option>
+                    <option value='nutritioneducation warmth care_hunger'>nutritioneducation warmth care_hunger</option>
+                    <option value='other'>other</option>
+                    <option value='other parentinvolvement'>other parentinvolvement</option>
+                    <option value='other performingarts'>other performingarts</option>
+                    <option value='other socialsciences'>other socialsciences</option>
+                    <option value='other specialneeds'>other specialneeds</option>
+                    <option value='other teamsports'>other teamsports</option>
+                    <option value='other visualarts'>other visualarts</option>
+                    <option value='other warmth care_hunger'>other warmth care_hunger</option>
+                    <option value='parentinvolvement'>parentinvolvement</option>
+                    <option value='parentinvolvement performingarts'>parentinvolvement performingarts</option>
+                    <option value='parentinvolvement socialsciences'>parentinvolvement socialsciences</option>
+                    <option value='parentinvolvement specialneeds'>parentinvolvement specialneeds</option>
+                    <option value='parentinvolvement teamsports'>parentinvolvement teamsports</option>
+                    <option value='parentinvolvement visualarts'>parentinvolvement visualarts</option>
+                    <option value='parentinvolvement warmth care_hunger'>parentinvolvement warmth care_hunger</option>
+                    <option value='performingarts'>performingarts</option>
+                    <option value='performingarts socialsciences'>performingarts socialsciences</option>
+                    <option value='performingarts specialneeds'>performingarts specialneeds</option>
+                    <option value='performingarts teamsports'>performingarts teamsports</option>
+                    <option value='performingarts visualarts'>performingarts visualarts</option>
+                    <option value='socialsciences'>socialsciences</option>
+                    <option value='socialsciences specialneeds'>socialsciences specialneeds</option>
+                    <option value='socialsciences teamsports'>socialsciences teamsports</option>
+                    <option value='socialsciences visualarts'>socialsciences visualarts</option>
+                    <option value='specialneeds'>specialneeds</option>
+                    <option value='specialneeds teamsports'>specialneeds teamsports</option>
+                    <option value='specialneeds visualarts'>specialneeds visualarts</option>
+                    <option value='specialneeds warmth care_hunger'>specialneeds warmth care_hunger</option>
+                    <option value='teamsports'>teamsports</option>
+                    <option value='teamsports visualarts'>teamsports visualarts</option>
+                    <option value='visualarts'>visualarts</option>
+                    <option value='visualarts warmth care_hunger'>visualarts warmth care_hunger</option>
+                    <option value='warmth care_hunger'>warmth care_hunger</option>
+            	</select>
+            </div>
+            <br>
+            <div class='form-group'>
+            	<h3>Funds Required</h3>
+            	<input id="third" name="price" required="required" class='form-control form-control-sm'>
+            </div>
+            <br>
+            <div class='form-group'>
+            	<h3>School State</h3>
+            	<select class='form-control form-control-sm' name="state" id="fuel" required="required">
+                    <option value='ak'>AK</option>
+                    <option value='al'>AL</option>
+                    <option value='ar'>AR</option>
+                    <option value='az'>AZ</option>
+                    <option value='ca'>CA</option>
+                    <option value='co'>CO</option>
+                    <option value='ct'>CT</option>
+                    <option value='dc'>DC</option>
+                    <option value='de'>DE</option>
+                    <option value='fl'>FL</option>
+                    <option value='ga'>GA</option>
+                    <option value='hi'>HI</option>
+                    <option value='ia'>IA</option>
+                    <option value='id'>ID</option>
+                    <option value='il'>IL</option>
+                    <option value='in'>IN</option>
+                    <option value='ks'>KS</option>
+                    <option value='ky'>KY</option>
+                    <option value='la'>LA</option>
+                    <option value='ma'>MA</option>
+                    <option value='md'>MD</option>
+                    <option value='me'>ME</option>
+                    <option value='mi'>MI</option>
+                    <option value='mn'>MN</option>
+                    <option value='mo'>MO</option>
+                    <option value='ms'>MS</option>
+                    <option value='mt'>MT</option>
+                    <option value='nc'>NC</option>
+                    <option value='nd'>ND</option>
+                    <option value='ne'>NE</option>
+                    <option value='nh'>NH</option>
+                    <option value='nj'>NJ</option>
+                    <option value='nm'>NM</option>
+                    <option value='nv'>NV</option>
+                    <option value='ny'>NY</option>
+                    <option value='oh'>OH</option>
+                    <option value='ok'>OK</option>
+                    <option value='or'>OR</option>
+                    <option value='pa'>PA</option>
+                    <option value='ri'>RI</option>
+                    <option value='sc'>SC</option>
+                    <option value='sd'>SD</option>
+                    <option value='tn'>TN</option>
+                    <option value='tx'>TX</option>
+                    <option value='ut'>UT</option>
+                    <option value='va'>VA</option>
+                    <option value='vt'>VT</option>
+                    <option value='wa'>WA</option>
+                    <option value='wi'>WI</option>
+                    <option value='wv'>WV</option>
+                    <option value='wy'>WY</option>
+            	</select>
+            </div>
+            <br>
+            <div class='form-group'>
+            	<h3>Describe your Needs</h3>
+            	<input id="fourth" name="essay" required="required" class='form-control form-control-sm'>
+            </div>
+            <br><br><button class='btn btn-primary' id="sub" type="submit">Predict</button>
+            <br><br>
+        </form>
+    </div>
+    <style>
+        body {
+            text-align: center;
+            /* background-image: linear-gradient( 106.1deg,  rgba(69,242,143,0.52) 10.2%, rgba(14,228,175,0.61) 83.6% ); */
+			font-family: 'Montserrat', sans-serif;
+            background-color: #FA8BFF;
+            background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
+        }
+        .pred {
+        	padding-left: 300px;
+            padding-right: 300px;
+        }
+        .title {
+        	font-size: 70px;
+        }
+    </style>
+</body>
+</html>
